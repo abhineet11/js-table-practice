@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Employee Portal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>  
+        <div class="main-container">
+            <div class="filter-container">
+                <input id="search" placeholder="Search a field..."/>
+                <select name="select" id="select">
+                    <option value="" default>Select Option</option>
+                    <option value="position">position</option>
+                    <option value="office">location</option>
+                </select>
+            </div>
+            <table id="table-container">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                
+            </table>
+            <table id="tableGroup-container">
+                <thead>
+                    <tr>
+                        <th id=""></th>
+                        <th id=""></th>
+                        
+                    </tr>
+                </thead>
+            </table>
+            <div class="pagination"></div>
+            
+        </div>  
+        <script src="index.js" defer></script>
+        <script src="utils.js" defer></script>
+    </body>
+</html>
