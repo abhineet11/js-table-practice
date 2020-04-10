@@ -7,7 +7,6 @@ function paginate(
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
 
-    // ensure current page isn't out of range
     if (currentPage < 1) {
         currentPage = 1;
     } else if (currentPage > totalPages) {
@@ -32,7 +31,6 @@ function paginate(
             startPage = totalPages - maxPages + 1;
             endPage = totalPages;
         } else {
-            // current page somewhere in the middle
             startPage = currentPage - maxPagesBeforeCurrentPage;
             endPage = currentPage + maxPagesAfterCurrentPage;
         }
@@ -42,7 +40,7 @@ function paginate(
     let startIndex = (currentPage - 1) * pageSize;
     let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
-    // create an array of pages to ng-repeat in the pager control
+    
     let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
 
     // return object with all pager properties required by the view
@@ -59,3 +57,20 @@ function paginate(
     };
 }
 
+const groupBy = (userSelection, employeeData) => {
+    const groupData = {};
+    const label = userSelection === "position" ? "office" : "position";
+    employeeData.data.forEach((emp, i) => {
+      if (groupData[emp[userSelection]]) {
+        groupData[emp[userSelection]].push({
+          name: emp.name,
+          [label]: emp[label],
+        });
+      } else {
+        groupData[emp[userSelection]] = [
+          { name: emp.name, [label]: emp[label] },
+        ];
+      }
+    });
+    return groupData;
+  };
